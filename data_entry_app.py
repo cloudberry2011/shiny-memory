@@ -32,10 +32,17 @@ ttk.Label(r_info, text='Date').grid(row=0, column=0)
 ttk.Entry(
     r_info,
     textvariable=variables['Date']
-).grid(row=2, column=0, sticky=(tk.W + tk.E))
+).grid(row=1, column=0, sticky=(tk.W + tk.E))
 
         # TODO Time
-
+time_values = ['8:00', '12:00', '16:00', '20:00']
+variables['Time'] = tk.StringVar()
+ttk.Label(r_info, text='Time').grid(row=0, column=1)
+ttk.Combobox(
+    r_info,
+    textvariable=variables['Time'],
+    values=time_values
+).grid(row=1, column=1, sticky=(tk.W + tk.E))
 
 
 root.mainloop()
