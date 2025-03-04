@@ -34,7 +34,7 @@ ttk.Entry(
     textvariable=variables['Date']
 ).grid(row=1, column=0, sticky=(tk.W + tk.E))
 
-        # TODO Time
+        # Time
 time_values = ['8:00', '12:00', '16:00', '20:00']
 variables['Time'] = tk.StringVar()
 ttk.Label(r_info, text='Time').grid(row=0, column=1)
@@ -44,5 +44,7 @@ ttk.Combobox(
     values=time_values
 ).grid(row=1, column=1, sticky=(tk.W + tk.E))
 
+        # TODO Technician
+        # TODO Lab
 
 root.mainloop()
