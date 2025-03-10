@@ -82,6 +82,26 @@ ttk.Entry(
     textvariable=variables['Seed Sample']
 ).grid(row=3, column=2, sticky=(tk.W + tk.E))
 
-    # TODO Environment Information Frame
+    # Environment Information Frame
+    # 1. Create the environment information frame
+e_info = ttk.LabelFrame(drf, text="Environment Data") 
+e_info.grid(sticky=tk.W + tk.E)
+for i in range(3):
+    e_info.columnconfigure(i, weight=1)
+    
+        # Humidity
+        # 2. Create the variables for the field
+variables["Humidity"] = tk.DoubleVar()
+        # 3. Create the label for the field
+ttk.Label(e_info, text="Humidity (g/m3)").grid(row=0, column=0)        
+        # 4. Create the field
+ttk.Spinbox(
+    e_info,
+    textvariable=variables["Humidity"],
+    from_=0.5,
+    to=52.0,
+    increment=0.01
+).grid(row=1, column=0, sticky=(tk.W+tk.E))
+        
         
 root.mainloop()
