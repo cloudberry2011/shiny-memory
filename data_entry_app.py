@@ -109,9 +109,18 @@ ttk.Spinbox(
     to=100,
     increment=0.01
 ).grid(row=1, column=1, sticky=(tk.W + tk.E))
-        # - create variable 
-        # - create label
-        # - create field
-        # - position it
+
+        # Create the Light Field
+variables["Light"] = tk.DoubleVar()
+ttk.Label(e_info, text="Light (klx)").grid(row=0, column=1)
+ttk.Spinbox(
+    e_info,
+    textvariable=variables["Light"],
+    from_=0,
+    to=100,
+    increment=0.01
+).grid(row=1, column=1, sticky=(tk.W + tk.E))
+
+# TODO Create the temperature field
         
 root.mainloop()
