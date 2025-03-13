@@ -119,6 +119,13 @@ ttk.Spinbox(
     to_=40, 
     increment=.01
 ).grid(row=1, column=2, sticky=(tk.W + tk.E))
+
+variables['Equipment Fault'] = tk.BooleanVar(value=False)
+ttk.Checkbutton(
+    e_info,
+    variable=variables['Equipment Fault'],
+    text='Equipment Fault'
+).grid(row=2, column=0, sticky=tk.W, pady=5)
         
 root.mainloop()
 
