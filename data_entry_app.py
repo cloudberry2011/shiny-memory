@@ -126,6 +126,9 @@ ttk.Checkbutton(
     variable=variables['Equipment Fault'],
     text='Equipment Fault'
 ).grid(row=2, column=0, sticky=tk.W, pady=5)
+
+# Plant Information Frame
+
         
 root.mainloop()
 
