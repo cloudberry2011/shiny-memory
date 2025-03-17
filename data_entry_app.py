@@ -154,6 +154,18 @@ ttk.Spinbox(
     to=1000,
     increment=1
 ).grid(row=1, column=1, sticky=(tk.W + tk.E))
+
+# Fruit
+variables['Fruit'] = tk.IntVar()
+ttk.Label(p_info, text='Fruit').grid(row=0, column=2)
+ttk.Spinbox(
+    p_info,
+    textvariable=variables['Fruit'],
+    from_=0,
+    to=1000,
+    increment=1
+).grid(row=1, column=2, sticky=(tk.W + tk.E))
+
         
 root.mainloop()
 
