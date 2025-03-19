@@ -166,6 +166,8 @@ ttk.Spinbox(
     increment=1
 ).grid(row=1, column=2, sticky=(tk.W + tk.E))
 
+
+
         
 root.mainloop()
 
