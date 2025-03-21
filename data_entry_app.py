@@ -177,6 +177,19 @@ ttk.Spinbox(
     increment=0.01
 ).grid(row=3, column=0, sticky=(tk.W + tk.E))
 
+# Max Height
+variables['Max Height'] = tk.DoubleVar()
+ttk.Label(
+    p_info,
+    text='Max Height(cm)'
+).grid(row=2, column=1)
+ttk.Spinbox(
+    p_info,
+    textvariable=variables['Max Height'],
+    from_=0,
+    to=1000,
+    increment=0.01
+).grid(row=3, column=1, sticky=(tk.W + tk.E))
         
 root.mainloop()
 
