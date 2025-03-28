@@ -206,6 +206,7 @@ ttk.Spinbox(
 notes_inp = tk.Text(drf, widt=75, height=10)
 notes_inp.grid(sticky=(tk.W + tk.E))
 
+
 root.mainloop()
 
 
