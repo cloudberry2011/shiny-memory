@@ -1,8 +1,18 @@
 import tkinter as tk
 from tkinter import ttk
 
+# for creating the filename
+from datetime import datetime
+
+# for file operations
+from pathlib import Path
+
+# for creating the CSV file
+import csv
+
 # Create a dict to hold our variables
 variables = dict()
+records_saved = 0
 
 root = tk.Tk()
 root.title("ABQ Data Entry Application")
@@ -239,35 +249,47 @@ def on_reset():
 reset_button.configure(command=on_reset)
 
 def on_save():
-    pass
+    """Handle save button clicks"""
+
+    global records_saved
+    # For now, we save to a hardcoded filename with a datestring
+    # If it doesn't exist, create it,
+    # otherwise just ppend to the existing file
+    datestring = datetime.today().strftime("%Y-%m-%d")
+    filename = f"abq_data_record_{datestring}.csv"
+    newfile = not Path(filename).exists()
+
+    # get the data from the variables
+    data = dict()
+    fault = variables['Equipment Fault'].get()
+    for key, variable in variables.items():
+        if fault and key in ('Light', 'Humidity', 'Temperature'):
+            data[key] = ''
+        else:
+            try:
+                data[key] = variable.get()
+            except tk.TclError:
+                status_variable.set (
+                        f'Error in field: {key}. Data was not saved!')
+                return
+    # get the Text widget contents separately
+    data['Notes'] = notes_inp.get('1.0', tk.END)
+
+    # append the record to a csv
+    with open(filename, 'a', newline='') as fh:
+        csvwriter = csv.DictWriter(fh, fieldnames=data.keys())
+        if newfile:
+            csvwriter.writeheader()
+        csvwriter.writerow(data)
+
+    records_saved += 1
+    status_variable.set(
+            f"{records_saved} records saved this session")
+    on_reset()
+
+save_button.configure(command=on_save)
+
+# Reset the form
+on_reset()
 
 root.mainloop()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
